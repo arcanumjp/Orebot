@@ -21,7 +21,7 @@ public class OrebotThread extends Thread{
 			while(true){
 
 				oreBot();
-				Thread.sleep(1000*60);	//‚P•ªŠÔ‹xŒe
+				Thread.sleep(1000*60);	//ï¿½Pï¿½ï¿½ï¿½Ô‹xï¿½e
 			}
 
 		}
@@ -35,47 +35,47 @@ public class OrebotThread extends Thread{
 	private void oreBot() throws TwitterException{
 
 
-		//“y“ú‚ğœ‚­
+		//ï¿½yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		Calendar cal = Calendar.getInstance();
 		System.out.println("-- " + new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(cal.getTime()));
 		int week = cal.get(Calendar.DAY_OF_WEEK);
 		if(week == Calendar.SATURDAY || week == Calendar.SUNDAY){
-			//System.out.println("  ¡“ú‚Í“y“ú‚¾‚©‚ç‹x‚Ş‚æB");
+			//System.out.println("  ï¿½ï¿½ï¿½ï¿½ï¿½Í“yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½xï¿½Ş‚ï¿½ï¿½B");
 			return;
 		}
 
 
-		// ‚P“ú‚P‰ñ
+		// ï¿½Pï¿½ï¿½ï¿½Pï¿½ï¿½
 		DateFormat yyyymmdd = new SimpleDateFormat("yyyyMMdd");
 		String today = yyyymmdd.format(cal.getTime());
 		if(_lastTweet != null && _lastTweet.equals(today)){
-			//System.out.println("  ¡“ú‚Í‚à‚¤‚Â‚Ô‚â‚¢‚½‚©‚çƒIƒŒbot‚Ìd–‚ÍI‚í‚è‚ËB");
+			//System.out.println("  ï¿½ï¿½ï¿½ï¿½ï¿½Í‚ï¿½ï¿½ï¿½ï¿½Â‚Ô‚â‚¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½botï¿½Ìdï¿½ï¿½ï¿½ÍIï¿½ï¿½ï¿½ï¿½ï¿½ËB");
 			return;
 		}
 
-		// ‚U‚Ü‚Å‘Ò‚Â
-		if(cal.get(Calendar.HOUR_OF_DAY)!=13){
-			//System.out.println("  ‚Ü‚¾‚U‚É‚È‚Á‚Ä‚È‚¢‚È‚ŸEEE");
+		// ï¿½Uï¿½ï¿½ï¿½Ü‚Å‘Ò‚ï¿½
+		if(cal.get(Calendar.HOUR_OF_DAY)!=6){
+			//System.out.println("  ï¿½Ü‚ï¿½ï¿½Uï¿½ï¿½ï¿½É‚È‚ï¿½ï¿½Ä‚È‚ï¿½ï¿½È‚ï¿½ï¿½Eï¿½Eï¿½E");
 			return;
 		}
 
 
-		//@‚³‚ŸA’©‚U‚É‚È‚Á‚½B
-		System.out.println("‚³‚ŸA‚Â‚Ô‚â‚­‚¼II");
+		//ï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½É‚È‚ï¿½ï¿½ï¿½ï¿½B
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½Â‚Ô‚â‚­ï¿½ï¿½ï¿½Iï¿½I");
 
-		// Twitte4jƒCƒ“ƒXƒ^ƒ“ƒXæ“¾
+		// Twitte4jï¿½Cï¿½ï¿½ï¿½Xï¿½^ï¿½ï¿½ï¿½Xï¿½æ“¾
 		ConfigurationBuilder cb = new ConfigurationBuilder();
 		cb.setDebugEnabled(false)
-		  .setOAuthConsumerKey("ƒRƒ“ƒVƒ…[ƒ}EƒL[")
-		  .setOAuthConsumerSecret("ƒRƒ“ƒVƒ…[ƒ}EƒV[ƒNƒŒƒbƒg")
-		  .setOAuthAccessToken("ƒAƒNƒZƒXEƒg[ƒNƒ“")
-		  .setOAuthAccessTokenSecret("ƒAƒNƒZƒXƒg[ƒNƒ“EƒV[ƒNƒŒƒbƒg");
+		  .setOAuthConsumerKey("ï¿½Rï¿½ï¿½ï¿½Vï¿½ï¿½ï¿½[ï¿½}ï¿½Eï¿½Lï¿½[")
+		  .setOAuthConsumerSecret("ï¿½Rï¿½ï¿½ï¿½Vï¿½ï¿½ï¿½[ï¿½}ï¿½Eï¿½Vï¿½[ï¿½Nï¿½ï¿½ï¿½bï¿½g")
+		  .setOAuthAccessToken("ï¿½Aï¿½Nï¿½Zï¿½Xï¿½Eï¿½gï¿½[ï¿½Nï¿½ï¿½")
+		  .setOAuthAccessTokenSecret("ï¿½Aï¿½Nï¿½Zï¿½Xï¿½gï¿½[ï¿½Nï¿½ï¿½ï¿½Eï¿½Vï¿½[ï¿½Nï¿½ï¿½ï¿½bï¿½g");
 		TwitterFactory tf = new TwitterFactory(cb.build());
 
 		Twitter tw = tf.getInstance();
-		tw.updateStatus("‚¨‚Í‚æ‚¤‚²‚´‚¢‚Ü‚·B¡“ú‚àŒ³‹C‚ÉEEEd–‚Å‚·‚ËB‚µ‚å‚Ú[‚ñiL¥ƒÖ¥`j");
+		tw.updateStatus("ï¿½ï¿½ï¿½Í‚æ‚¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½Bï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Cï¿½ÉEï¿½Eï¿½Eï¿½dï¿½ï¿½ï¿½Å‚ï¿½ï¿½ËBï¿½ï¿½ï¿½ï¿½ï¿½Ú[ï¿½ï¿½ï¿½iï¿½Lï¿½ï¿½Ö¥`ï¿½j");
 
-		_lastTweet = today;	//‚Â‚Ô‚â‚¢‚½“ú•Û‘¶
+		_lastTweet = today;	//ï¿½Â‚Ô‚â‚¢ï¿½ï¿½ï¿½ï¿½ï¿½Û‘ï¿½
 
 	}
 
