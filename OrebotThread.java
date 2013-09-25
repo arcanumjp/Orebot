@@ -21,7 +21,7 @@ public class OrebotThread extends Thread{
 			while(true){
 
 				oreBot();
-				Thread.sleep(1000*60);	//�P���ԋx�e
+				Thread.sleep(1000*60);	//１分間休憩
 			}
 
 		}
@@ -35,47 +35,47 @@ public class OrebotThread extends Thread{
 	private void oreBot() throws TwitterException{
 
 
-		//�y��������
+		//土日を除く
 		Calendar cal = Calendar.getInstance();
 		System.out.println("-- " + new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(cal.getTime()));
 		int week = cal.get(Calendar.DAY_OF_WEEK);
 		if(week == Calendar.SATURDAY || week == Calendar.SUNDAY){
-			//System.out.println("  �����͓y���������x�ނ��B");
+			//System.out.println("  今日は土日だから休むよ。");
 			return;
 		}
 
 
-		// �P���P��
+		// １日１回
 		DateFormat yyyymmdd = new SimpleDateFormat("yyyyMMdd");
 		String today = yyyymmdd.format(cal.getTime());
 		if(_lastTweet != null && _lastTweet.equals(today)){
-			//System.out.println("  �����͂����Ԃ₢�������I��bot�̎d���͏I�����ˁB");
+			//System.out.println("  今日はもうつぶやいたからオレbotの仕事は終わりね。");
 			return;
 		}
 
-		// �U���܂ő҂�
+		// ６時まで待つ
 		if(cal.get(Calendar.HOUR_OF_DAY)!=6){
-			//System.out.println("  �܂��U���ɂȂ��ĂȂ��Ȃ��E�E�E");
+			//System.out.println("  まだ６時になってないなぁ・・・");
 			return;
 		}
 
 
-		//�@�����A���U���ɂȂ����B
-		System.out.println("�����A�Ԃ₭���I�I");
+		//　さぁ、朝６時になった。
+		//System.out.println("さぁ、つぶやくぞ！！");
 
-		// Twitte4j�C���X�^���X�擾
+		// Twitte4jインスタンス取得
 		ConfigurationBuilder cb = new ConfigurationBuilder();
 		cb.setDebugEnabled(false)
-		  .setOAuthConsumerKey("�R���V���[�}�E�L�[")
-		  .setOAuthConsumerSecret("�R���V���[�}�E�V�[�N���b�g")
-		  .setOAuthAccessToken("�A�N�Z�X�E�g�[�N��")
-		  .setOAuthAccessTokenSecret("�A�N�Z�X�g�[�N���E�V�[�N���b�g");
+		  .setOAuthConsumerKey("コンシューマ・キー")
+		  .setOAuthConsumerSecret("コンシューマ・シークレット")
+		  .setOAuthAccessToken("アクセス・トークン")
+		  .setOAuthAccessTokenSecret("アクセストークン・シークレット");
 		TwitterFactory tf = new TwitterFactory(cb.build());
 
 		Twitter tw = tf.getInstance();
-		tw.updateStatus("���͂悤�������܂��B���������C�ɁE�E�E�d���ł��ˁB�����ځ[���i�L��֥`�j");
+		tw.updateStatus("おはようございます。今日も元気に・・・仕事ですね。しょぼーん（´･ω･`）");
 
-		_lastTweet = today;	//�Ԃ₢�����ۑ�
+		_lastTweet = today;	//つぶやいた日保存
 
 	}
 
